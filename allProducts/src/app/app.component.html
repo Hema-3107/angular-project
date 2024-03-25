@@ -1,0 +1,56 @@
+<button (click)="getProducts()">getProducts</button>
+<h2>All products</h2>
+<div class="row">
+<div *ngFor="let prod of products" class="card col-3 m-5">
+  <h4 class="card-header">{{prod.id}}.{{prod.title}}</h4>
+  <img src="{{prod.image}}"/>
+  <h6>Description:{{prod.description}}</h6>
+  <h4>Price:{{prod.price | currency}}</h4>
+  <h6>Category:{{prod.category}}</h6>
+  <h6>Rating:{{prod.rating.rate}}</h6>
+  <p>Count:{{prod.rating.count}}</p>
+  <div class="card-footer btn-group">
+    <button class="btn btn-primary">BUY NOW</button>
+    <button class="btn btn-success">ADD TO CART</button>
+    <button class="btn btn-danger">DELETE</button>
+    <button class="btn btn-info"data-bs-toggle="modal" data-bs-target="#exampleModal">EDIT</button>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Product</h1>
+      </div>
+      <div class="modal-body">
+        <form>
+                <div>
+                  <input [(ngModel)]="title" placeholder="Enter Title" name="title" type="text" />
+                  
+                </div>
+                <div>
+                  <input [(ngModel)]="price"placeholder="Enter Price" name="price" type="text" />
+                  
+                </div>
+                <div>
+                  <input [(ngModel)]="description"placeholder="Enter Description" name="description" type="text" />
+                 
+                </div>
+                <div>
+                  <input [(ngModel)]="image"placeholder="Display Image" name="image" type="text" />
+
+                </div>
+                <div>
+                  <input [(ngModel)]="category"placeholder="Enter Category" name="category" type="text" />
+                </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="updateProduct()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
